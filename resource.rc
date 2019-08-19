@@ -2,7 +2,7 @@
 #include "Resource.h"
 
 // Give the location of the iconfiles :)
-APPLICATION_ICON ICON "images\\Donald.ico"
+APPLICATION_ICON ICON "images\\mush.ico"
 
 // Create menu for system tray icon
 SYSTRAY_MENU MENU
