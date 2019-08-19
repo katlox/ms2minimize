@@ -1,2 +1,4 @@
 win32gui_systray.layout
 win32gui_systray.depend
+obj/
+bin/
