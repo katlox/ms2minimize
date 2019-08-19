@@ -1,0 +1,18 @@
+// Include resource ID header
+#include "Resource.h"
+
+// Give the location of the iconfiles :)
+APPLICATION_ICON ICON "images\\Donald.ico"
+
+// Create menu for system tray icon
+SYSTRAY_MENU MENU
+BEGIN
+  POPUP "Systray menu"
+  BEGIN
+    MENUITEM "&Show logfile" , IDM_LOGFILE
+    MENUITEM "&Show settings" , IDM_SETTINGS
+    MENUITEM "&Help" , IDM_HELP
+    MENUITEM SEPARATOR
+    MENUITEM "&Exit" , IDM_EXIT
+  END
+END
