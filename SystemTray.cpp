@@ -364,7 +364,7 @@ LRESULT CSystemTray::OnTrayNotification(UINT wParam, LONG lParam)
     if(!::TrackPopupMenu(m_SubMenu, 0, Point.x, Point.y, 0, m_hWnd, NULL)) return 0;
     PostMessage(m_hWnd, WM_NULL, 0, 0);                                         // BUGFIX: See "PRB: Menus for Notification Icons Don't Work Correctly"
   } // if(LOWORD(lParam)==WM_RBUTTONUP)
-  else if(LOWORD(lParam)==WM_LBUTTONDBLCLK)                                     // double click received, the default action is to execute default menu item
+  else if(LOWORD(lParam)==WM_LBUTTONUP)                                     // double click received, the default action is to execute default menu item
   {
     SetForegroundWindow(m_hWnd);
     UINT uItem;
