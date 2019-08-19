@@ -9,9 +9,8 @@ SYSTRAY_MENU MENU
 BEGIN
   POPUP "Systray menu"
   BEGIN
-    MENUITEM "&Show logfile" , IDM_LOGFILE
-    MENUITEM "&Show settings" , IDM_SETTINGS
-    MENUITEM "&Help" , IDM_HELP
+    MENUITEM "&About/Help" , IDM_ABOUT_HELP
+    MENUITEM "&Minimize MS2" , IDM_MINIMIZE_MS_2
     MENUITEM SEPARATOR
     MENUITEM "&Exit" , IDM_EXIT
   END

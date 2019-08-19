@@ -22,9 +22,9 @@ documentation:
 LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);
 
 /*  Make the class name into a global variable  */
-char szClassName[ ] = "CodeBlocksWindowsApp";
-char szTitle[ ] = "Demo program with systray icon";
-char szToolTip[ ] = "Demo program - System tray icon";
+char szClassName[ ] = "ms2minimize";
+char szTitle[ ] = "MS2 Minimize";
+char szToolTip[ ] = "Click here to minimize MS2";
 
 CSystemTray sysTray;
 
@@ -79,7 +79,7 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
   HICON icon = wincl.hIconSm;
   //CSystemTray sysTray = CSystemTray(hThisInstance, hwnd, uCallbackMessage, szToolTip, icon, 0);
   sysTray.Create(hThisInstance, hwnd, uCallbackMessage, szToolTip, icon, 0);
-  sysTray.SetPopupMenuDefaultItem(IDM_LOGFILE, 0);
+  sysTray.SetPopupMenuDefaultItem(IDM_MINIMIZE_MS_2, 0);
   sysTray.SetPopupMenu(SYSTRAY_MENU);
 
   /* Do NOT make the window visible on the screen */
@@ -115,26 +115,14 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
       // so we are going to process it.
       switch ( wParam )
       {
-        case IDM_LOGFILE:
-          MessageBox( hwnd  ,  "Open logfile..." , "Logfile" , MB_OK );
+        case IDM_ABOUT_HELP:
+          MessageBox ( hwnd  , "nothing to it just use it" , "About" , MB_OK );
           return 0;
-        case IDM_SETTINGS:
-          MessageBox ( hwnd  , "Show settings..." , "Settings" , MB_OK );
-          return 0;
-        case IDM_HELP:
-          MessageBox ( hwnd  , "Help menu..." , "Help" , MB_OK );
+        case IDM_MINIMIZE_MS_2:
+          MessageBox ( hwnd  , "Minimize MS2" , "Minimize" , MB_OK );
           return 0;
         case IDM_EXIT:
-          {
-            int res = MessageBox ( hwnd,
-                      "Are you sure you want to exit the program?" ,
-                      "Exit program",
-                      MB_YESNOCANCEL | MB_ICONEXCLAMATION) ;
-            if (res == IDYES)
-            {
-              PostQuitMessage (0);       /* send a WM_QUIT to the message queue */
-            }
-          }
+          PostQuitMessage (0);       /* send a WM_QUIT to the message queue */
           return 0;
         default:
           MessageBox ( hwnd ,"Unknown menu item " , "Error" , MB_OK );
