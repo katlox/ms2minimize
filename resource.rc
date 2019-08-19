@@ -10,7 +10,7 @@ BEGIN
   POPUP "Systray menu"
   BEGIN
     MENUITEM "&Minimize MS2" , IDM_MINIMIZE_MS_2
-    MENUITEM "&About/Help" , IDM_ABOUT_HELP
+    MENUITEM "&About" , IDM_ABOUT
     MENUITEM SEPARATOR
     MENUITEM "&Exit" , IDM_EXIT
   END

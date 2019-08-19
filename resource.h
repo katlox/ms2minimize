@@ -5,6 +5,6 @@
 // definitions for the MAIN_MENU
 #define SYSTRAY_MENU 1100
 
-#define IDM_ABOUT_HELP 1
+#define IDM_ABOUT 1
 #define IDM_MINIMIZE_MS_2 2
 #define IDM_EXIT 3

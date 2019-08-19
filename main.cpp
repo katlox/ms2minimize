@@ -6,6 +6,7 @@ TODO:
   allow only one instance
 
 documentation:
+  https://www.dreamincode.net/forums/topic/69395-cant-get-systray-icon-menu-working/
   http://www.codeguru.com/cpp/com-tech/shell/icons/comments.php/c1335/?thread=6517
   http://www.daniweb.com/blogs/entry3389.html
   http://forum.pcmweb.nl/archive/index.php/t-4733.html
@@ -115,8 +116,8 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
         // so we are going to process it.
         switch ( wParam )
         {
-        case IDM_ABOUT_HELP:
-            MessageBox ( hwnd, "nothing to it just use it", "About", MB_ICONINFORMATION );
+        case IDM_ABOUT:
+            MessageBox ( hwnd, "MS2Minimize v1 (8/19/19)\nCreated by /u/Loxiona", "About", MB_ICONINFORMATION );
             return 0;
         case IDM_MINIMIZE_MS_2:
             {
