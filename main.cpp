@@ -104,38 +104,53 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
 
 LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-  switch (message)                  /* handle the messages */
-  {
+    switch (message)                  /* handle the messages */
+    {
     case WM_DESTROY:
-      PostQuitMessage (0);       /* send a WM_QUIT to the message queue */
-      break;
+        PostQuitMessage (0);       /* send a WM_QUIT to the message queue */
+        break;
 
     case WM_COMMAND:
-      // the wParam is the command message from the menu bar
-      // so we are going to process it.
-      switch ( wParam )
-      {
+        // the wParam is the command message from the menu bar
+        // so we are going to process it.
+        switch ( wParam )
+        {
         case IDM_ABOUT_HELP:
-          MessageBox ( hwnd  , "nothing to it just use it" , "About" , MB_OK );
-          return 0;
+            MessageBox ( hwnd, "nothing to it just use it", "About", MB_ICONINFORMATION );
+            return 0;
         case IDM_MINIMIZE_MS_2:
-          MessageBox ( hwnd  , "Minimize MS2" , "Minimize" , MB_OK );
-          return 0;
+            {
+                //We Find the ms2 window and minimize it.
+
+                //Get Window Handle
+                HWND window = FindWindowA(NULL, "MapleStory2 - A New Beginning (x64)");
+                if (window==0)
+                    window = FindWindowA(NULL, "MapleStory2 - A New Beginning");
+                //minimize window if we found the ms2 window and it is not already minimized
+                if (window!=0)
+                {
+                    if (!IsIconic(window))
+                        ShowWindow(window,SW_MINIMIZE);
+                }
+                else
+                    MessageBox(hwnd, "Could not Find ms2 window.", "Minimize", MB_ICONWARNING );
+                return 0;
+            }
         case IDM_EXIT:
-          PostQuitMessage (0);       /* send a WM_QUIT to the message queue */
-          return 0;
+            PostQuitMessage (0);       /* send a WM_QUIT to the message queue */
+            return 0;
         default:
-          MessageBox ( hwnd ,"Unknown menu item " , "Error" , MB_OK );
-          return 0;
-      }
+            MessageBox ( hwnd,"Unknown menu item ", "Error", MB_OK );
+            return 0;
+        }
 
     case WM_ICONNOTIFY:
-      // Handle actions when user clicks on the systray icon
-      return sysTray.OnTrayNotification(wParam, lParam);
+        // Handle actions when user clicks on the systray icon
+        return sysTray.OnTrayNotification(wParam, lParam);
 
     default:                      /* for messages that we don't deal with */
-      return DefWindowProc (hwnd, message, wParam, lParam);
-  }
+        return DefWindowProc (hwnd, message, wParam, lParam);
+    }
 
-  return 0;
+    return 0;
 }
