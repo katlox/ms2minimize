@@ -7,7 +7,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="ms2minimize" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/ms2minimize" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="bin/Debug/" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
@@ -17,7 +17,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="ms2minimize" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/ms2minimize" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="bin/Release/" />
 				<Option object_output="obj/Release/" />
 				<Option type="0" />
