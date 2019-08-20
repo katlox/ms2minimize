@@ -25,7 +25,7 @@ LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);
 /*  Make the class name into a global variable  */
 char szClassName[ ] = "ms2minimize";
 char szTitle[ ] = "MS2 Minimize";
-char szToolTip[ ] = "Click here to minimize MS2";
+char szToolTip[ ] = "Click to minimize/restore MS2";
 
 CSystemTray sysTray;
 
@@ -100,6 +100,21 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
   return messages.wParam;
 }
 
+void RestoreWindow(HWND hwnd)
+{
+    bool minimized = IsIconic(hwnd);
+    bool hidden = IsWindowVisible(hwnd);
+
+    if (hidden)
+    {
+        ShowWindow(hwnd,SW_SHOW);
+        if (minimized)
+            ShowWindow(hwnd,SW_RESTORE);
+    }
+    else if(minimized)
+        ShowWindow(hwnd,SW_RESTORE);
+
+}
 
 /*  This function is called by the Windows function DispatchMessage()  */
 
@@ -130,8 +145,28 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 //minimize window if we found the ms2 window and it is not already minimized
                 if (window!=0)
                 {
-                    if (!IsIconic(window))
+                    if (IsIconic(window) || !IsWindowVisible(window))
+                        ShowWindow(window,SW_RESTORE);
+                    else
                         ShowWindow(window,SW_MINIMIZE);
+                }
+                else
+                    MessageBox(hwnd, "Could not Find ms2 window.", "Minimize", MB_ICONWARNING );
+                return 0;
+            }
+        case IDM_HIDE_MS:
+            {
+                //Get Window Handle
+                HWND window = FindWindowA(NULL, "MapleStory2 - A New Beginning (x64)");
+                if (window==0)
+                    window = FindWindowA(NULL, "MapleStory2 - A New Beginning");
+                //minimize window if we found the ms2 window and it is not already minimized
+                if (window!=0)
+                {
+                    if (IsWindowVisible(window))
+                        ShowWindow(window,SW_HIDE);
+                    else
+                        ShowWindow(window,SW_RESTORE);
                 }
                 else
                     MessageBox(hwnd, "Could not Find ms2 window.", "Minimize", MB_ICONWARNING );

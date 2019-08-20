@@ -9,7 +9,8 @@ SYSTRAY_MENU MENU
 BEGIN
   POPUP "Systray menu"
   BEGIN
-    MENUITEM "&Minimize MS2" , IDM_MINIMIZE_MS_2
+    MENUITEM "&Toggle Hide" , IDM_HIDE_MS
+    MENUITEM "&Toggle Minimize" , IDM_MINIMIZE_MS_2
     MENUITEM "&About" , IDM_ABOUT
     MENUITEM SEPARATOR
     MENUITEM "&Exit" , IDM_EXIT

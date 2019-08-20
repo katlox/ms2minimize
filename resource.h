@@ -7,4 +7,5 @@
 
 #define IDM_ABOUT 1
 #define IDM_MINIMIZE_MS_2 2
-#define IDM_EXIT 3
+#define IDM_HIDE_MS 3
+#define IDM_EXIT 4
