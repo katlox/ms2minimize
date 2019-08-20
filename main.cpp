@@ -100,22 +100,6 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
   return messages.wParam;
 }
 
-void RestoreWindow(HWND hwnd)
-{
-    bool minimized = IsIconic(hwnd);
-    bool hidden = IsWindowVisible(hwnd);
-
-    if (hidden)
-    {
-        ShowWindow(hwnd,SW_SHOW);
-        if (minimized)
-            ShowWindow(hwnd,SW_RESTORE);
-    }
-    else if(minimized)
-        ShowWindow(hwnd,SW_RESTORE);
-
-}
-
 // gets the hwnd of the MS2 window if possible. If not found returns 0
 HWND GetMS2Window()
 {
