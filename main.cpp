@@ -116,6 +116,15 @@ void RestoreWindow(HWND hwnd)
 
 }
 
+// gets the hwnd of the MS2 window if possible. If not found returns 0
+HWND GetMS2Window()
+{
+    HWND window = FindWindowA("MapleStory2", "MapleStory2 - A New Beginning (x64)");
+    if (window==0)
+        window = FindWindowA("MapleStory2", "MapleStory2 - A New Beginning");
+    return window;
+}
+
 /*  This function is called by the Windows function DispatchMessage()  */
 
 LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -137,11 +146,8 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
         case IDM_MINIMIZE_MS_2:
             {
                 //We Find the ms2 window and minimize it.
-
                 //Get Window Handle
-                HWND window = FindWindowA(NULL, "MapleStory2 - A New Beginning (x64)");
-                if (window==0)
-                    window = FindWindowA(NULL, "MapleStory2 - A New Beginning");
+                HWND window = GetMS2Window();
                 //minimize window if we found the ms2 window and it is not already minimized
                 if (window!=0)
                 {
@@ -156,10 +162,9 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
             }
         case IDM_HIDE_MS:
             {
+                //We Find the ms2 window and minimize it.
                 //Get Window Handle
-                HWND window = FindWindowA(NULL, "MapleStory2 - A New Beginning (x64)");
-                if (window==0)
-                    window = FindWindowA(NULL, "MapleStory2 - A New Beginning");
+                HWND window = GetMS2Window();
                 //minimize window if we found the ms2 window and it is not already minimized
                 if (window!=0)
                 {
